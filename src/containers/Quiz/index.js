@@ -1,9 +1,12 @@
 import React from "react";
 import styles from "./index.module.css";
 import ActiveQuiz from "../../components/ActiveQuiz";
+import FinishedQuiz from "../../components/FinishedQiuz";
 
 class Quiz extends React.Component {
   state = {
+    results: {},
+    isFinished: false,
     activeQuestion: 0,
     answerState: null,
     quiz: [
@@ -72,10 +75,23 @@ alert( obj["0"] + obj[0] );`,
   };
 
   onAnswerClickHandler = answerId => {
+    if (this.state.answerState) {
+      const key = Object.keys(this.state.answerState)[0];
+      if (this.state.answerState[key] === "success") {
+        return;
+      }
+    }
+
     const question = this.state.quiz[this.state.activeQuestion];
+    const results = this.state.results;
 
     if (question.rightAnswer === answerId) {
+      if (!results[question.id]) {
+        results[question.id] = "success";
+      }
+
       this.setState({
+        results,
         answerState: {
           [answerId]: "success"
         }
@@ -83,7 +99,9 @@ alert( obj["0"] + obj[0] );`,
 
       const timeout = window.setTimeout(() => {
         if (this.isQuizFinished()) {
-          return console.log("finish");
+          this.setState({
+            isFinished: true
+          });
         }
 
         this.setState({
@@ -94,7 +112,9 @@ alert( obj["0"] + obj[0] );`,
         window.clearTimeout(timeout);
       }, 1000);
     } else {
+      results[question.id] = "error";
       this.setState({
+        results,
         answerState: {
           [answerId]: "error"
         }
@@ -108,22 +128,39 @@ alert( obj["0"] + obj[0] );`,
       : false;
   }
 
+  retryHandler = () => {
+    this.setState({
+      activeQuestion: 0,
+      answerState: null,
+      isFinished: false,
+      results: {}
+    });
+  };
+
   render() {
     return (
       <div className={styles.Quiz}>
         <div className={styles.Wrapper}>
           <h1 className={styles.Title}>Пройдите викторину</h1>
-          <ActiveQuiz
-            answers={this.state.quiz[this.state.activeQuestion].answers}
-            question={this.state.quiz[this.state.activeQuestion].question}
-            bodyQuestion={
-              this.state.quiz[this.state.activeQuestion].bodyQuestion
-            }
-            onAnswerClick={this.onAnswerClickHandler}
-            quizLength={this.state.quiz.length}
-            answerNumber={this.state.activeQuestion + 1}
-            state={this.state.answerState}
-          />
+          {this.state.isFinished ? (
+            <FinishedQuiz
+              results={this.state.results}
+              quiz={this.state.quiz}
+              onRetry={this.retryHandler}
+            />
+          ) : (
+            <ActiveQuiz
+              answers={this.state.quiz[this.state.activeQuestion].answers}
+              question={this.state.quiz[this.state.activeQuestion].question}
+              bodyQuestion={
+                this.state.quiz[this.state.activeQuestion].bodyQuestion
+              }
+              onAnswerClick={this.onAnswerClickHandler}
+              quizLength={this.state.quiz.length}
+              answerNumber={this.state.activeQuestion + 1}
+              state={this.state.answerState}
+            />
+          )}
         </div>
       </div>
     );

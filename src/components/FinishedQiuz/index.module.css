@@ -1,0 +1,58 @@
+.FinishedQuiz {
+  padding: 20px;
+  color: white;
+  border-left: 1px solid #6859d2;
+  background: linear-gradient(90deg, #6657ce 40%, #6b5cd5 60%);
+  background-size: 60% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  box-sizing: border-box;
+  margin: 0 10px;
+  position: relative;
+}
+
+.FinishedQuiz:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 45%;
+  background: linear-gradient(90deg, #6a5bd4 70%, #6d5dd7 30%);
+}
+
+.FinishedQuiz ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.FinishedQuiz ul li {
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+  line-height: 1.6;
+  align-items: center;
+}
+
+.QuestionName {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  margin-left: 10px;
+  flex: 1;
+}
+
+.svg {
+  margin-left: 10px;
+}
+
+.success {
+  color: #39c383;
+}
+
+.error {
+  color: #cc1818;
+}
