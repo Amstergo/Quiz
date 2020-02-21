@@ -3,33 +3,11 @@
   margin-bottom: 15px;
   cursor: pointer;
   transition: 0.3s;
-  border-left: 1px solid #ffffff59;
-  border-right: 1px solid #ffffff59;
-  position: relative;
+  border: 1px solid #ffffff59;
 }
 
-.AnswerItem:after,
-.AnswerItem:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 1px;
-  width: 100%;
-  background: linear-gradient(90deg, #b9b9b987 0%, #ffffff00 55%);
-}
-
-.AnswerItem:before {
-  top: 0;
-  right: 0;
-  height: 1px;
-  width: 100%;
-  background: linear-gradient(-90deg, #b9b9b987 0%, #ffffff00 55%);
-}
-
-.AnswerItem:hover::after,
-.AnswerItem:hover::before {
-  background: linear-gradient(90deg, #b9b9b987 100%, #ffffff00 100%);
+.AnswerItem:hover {
+  background-color: #ffffff1a;
 }
 
 .AnswerItem.success {
