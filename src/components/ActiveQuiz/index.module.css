@@ -8,6 +8,11 @@
 .Question {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.Question span {
+  flex: 1;
 }
 
 .Body {

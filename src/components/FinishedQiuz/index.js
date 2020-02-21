@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from "../UI/Button";
 
 const FinishedQuiz = props => {
   const successCount = Object.keys(props.results).reduce((total, key) => {
@@ -55,9 +56,7 @@ const FinishedQuiz = props => {
       </p>
 
       <div>
-        <button className={styles.btn} onClick={props.onRetry}>
-          Повторить
-        </button>
+        <Button onClick={props.onRetry}>Повторить</Button>
       </div>
     </div>
   );
