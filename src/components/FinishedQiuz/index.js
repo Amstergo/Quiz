@@ -55,7 +55,9 @@ const FinishedQuiz = props => {
       </p>
 
       <div>
-        <button onClick={props.onRetry}>Повторить</button>
+        <button className={styles.btn} onClick={props.onRetry}>
+          Повторить
+        </button>
       </div>
     </div>
   );

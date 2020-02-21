@@ -1,8 +1,8 @@
 .FinishedQuiz {
   padding: 20px;
   color: white;
-  border-left: 1px solid #6859d2;
-  background: linear-gradient(90deg, #6657ce 40%, #6b5cd5 60%);
+  border-left: 1px solid #b9b9b987;
+  background: linear-gradient(90deg, #b9b9b987 0%, #ffffff00 100%);
   background-size: 60% 1px;
   background-repeat: no-repeat;
   background-position: 0 0;
@@ -18,7 +18,7 @@
   left: 0;
   height: 1px;
   width: 45%;
-  background: linear-gradient(90deg, #6a5bd4 70%, #6d5dd7 30%);
+  background: linear-gradient(90deg, #b9b9b987 0%, #ffffff00 100%);
 }
 
 .FinishedQuiz ul {
@@ -55,4 +55,43 @@
 
 .error {
   color: #cc1818;
+}
+
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 15px 0;
+  text-decoration: underline;
+  line-height: 1.7;
+}
+
+.btn::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  border: #e1e1e191 solid 1px;
+  top: -16px;
+  right: -16px;
+  bottom: -16px;
+  left: -16px;
+  opacity: 0;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: top, right, bottom, left;
+  transition-property: top, right, bottom, left;
+}
+
+.btn:hover::before {
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  opacity: 1;
 }
