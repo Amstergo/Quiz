@@ -1,2 +1,27 @@
 .QuizeList {
+  background: linear-gradient(270deg, #bf6f6f 0%, #3636a2 100%);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: white;
+  padding-top: 100px;
+  flex-grow: 1;
+}
+
+.QuizeList ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.QuizeList ul li {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.QuizeList ul li a {
+  color: white;
+  text-decoration: none;
 }
