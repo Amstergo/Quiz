@@ -25,3 +25,7 @@
   color: white;
   text-decoration: none;
 }
+
+.QuizeList ul li a:hover {
+  color: #ccc;
+}
