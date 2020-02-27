@@ -137,6 +137,10 @@ alert( obj["0"] + obj[0] );`,
     });
   };
 
+  componentDidMount() {
+    console.log("Quize ID = ", this.props);
+  }
+
   render() {
     return (
       <div className={styles.Quiz}>
