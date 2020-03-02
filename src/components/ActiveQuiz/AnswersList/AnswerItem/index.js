@@ -7,6 +7,7 @@ const AnswerItem = props => {
   if (props.state) {
     classes.push(styles[props.state]);
   }
+
   return (
     <li
       className={classes.join(" ")}

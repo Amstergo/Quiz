@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./index.module.css";
-
+import axios from "../../axios/axios-quiz";
 import Button from "../../components/UI/Button";
 import {
   createControl,
@@ -85,9 +85,20 @@ class QuizCreator extends React.Component {
     });
   };
 
-  createQuizHandler = event => {
+  createQuizHandler = async event => {
     event.preventDefault();
-    console.log(this.state.quiz);
+
+    try {
+      await axios.post("/quizes.json", this.state.quiz);
+      this.setState({
+        quiz: [],
+        isFormValid: false,
+        rightAnswerId: 1,
+        formControls: createFormControls()
+      });
+    } catch (e) {
+      console.err(e);
+    }
   };
 
   changeHandler = (value, controlName) => {
