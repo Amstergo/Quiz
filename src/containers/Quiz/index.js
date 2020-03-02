@@ -95,7 +95,7 @@ alert( obj["0"] + obj[0] );`,
     const question = quiz[activeQuestion];
     const res = results;
 
-    if (question.rightAnswer === answerId) {
+    if (question.rightAnswerId === answerId) {
       if (!res[question.id]) {
         res[question.id] = "success";
       }
@@ -165,9 +165,8 @@ alert( obj["0"] + obj[0] );`,
     (async function fetchQuiz() {
       try {
         const res = await axios.get(`/quizes/${id}.json`);
-        console.log(res);
-        const q = res.data;
-        setQuiz(q);
+
+        setQuiz(res.data);
         setLoading(false);
       } catch (e) {
         console.error(e);
